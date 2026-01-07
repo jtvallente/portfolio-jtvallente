@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply bg-github-bg text-github-text;
+  }
+
+  body {
+    @apply font-sans;
+  }
+}
