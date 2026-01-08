@@ -21,6 +21,8 @@ import {
     SiFigma,
     SiExpress,
     SiCanva,
+    SiSquarespace,
+    SiWordpress,
   } from "react-icons/si"
   
   import SkillGroup from "./SkillGroup"
@@ -66,6 +68,8 @@ import {
             <SkillIcon icon={SiSupabase} label="Supabase" level="Intermediate" />
             <SkillIcon icon={SiNodedotjs} label="Node.js" level="Advanced" />
             <SkillIcon icon={SiExpress} label="Express.js" level="Advanced" />
+            <SkillIcon icon={SiSquarespace} label="Squarespace" level="Advanced" />
+            <SkillIcon icon={SiWordpress} label="Wordpress" level="Advanced" />
           </SkillGroup>
   
           <SkillGroup title="Tools & Platforms">

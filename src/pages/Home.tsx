@@ -35,11 +35,11 @@ export default function Home() {
             </h1>
 
             <p className="text-github-muted max-w-2xl text-base md:text-lg">
-              I build reliable web systems and AI models with a focus on{' '}
+              I build and design reliable web systems and AI models with a focus on{' '}
               <span className="text-github-text font-medium">
                 natural language processing
               </span>
-              . From research ideas to production-ready applications.
+              . From design-thinking process to production-ready applications.
             </p>
 
             {/* Actions */}
@@ -77,8 +77,8 @@ export default function Home() {
           I am a Computer Science graduate from the University of the
           Philippines Los Baños. My work focuses on machine learning, NLP, and
           full-stack development. I enjoy turning research ideas into working
-          systems. I have experience leading teams, building web apps, and
-          integrating AI into real products.
+          systems. I have experience leading teams, building and designing web apps, and
+          creating and integrating APIs.
         </p>
 
         {/* Connect */}
