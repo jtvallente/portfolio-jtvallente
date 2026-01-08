@@ -1,26 +1,29 @@
-import type { Project } from "@/data/projects"
-import ImageSlider from "./ImageSlider"
+import type { Project } from '@/data/projects'
+import ImageSlider from './ImageSlider'
 
 export default function FeaturedProject({ project }: { project: Project }) {
   return (
-    <section className="border border-github-border rounded-lg bg-github-surface p-8 space-y-6">
+    <section className="border border-github-border rounded-lg bg-github-surface p-6 space-y-4">
       {/* Header */}
-      <header className="space-y-2">
+      <header className="space-y-1">
         <span className="text-xs uppercase text-github-muted">
           Featured Project
         </span>
 
-        <h2 className="text-2xl font-semibold">
+        <h2 className="text-xl font-semibold leading-snug">
           {project.name}: {project.shortDescription}
+          {project.status && (
+            <span className="text-[10px] ml-3 px-2 py-0.5 rounded border border-github-border text-github-muted whitespace-nowrap">
+              {project.status.toUpperCase()}
+            </span>
+          )}
         </h2>
 
-        <p className="text-sm text-github-muted max-w-3xl">
-          {project.problem}
-        </p>
+        <p className="text-sm text-github-muted max-w-3xl">{project.problem}</p>
       </header>
 
       {/* Screenshots */}
-      <div className="bg-github-canvas rounded-md">
+      <div className="bg-github-canvas rounded-md overflow-hidden max-h-[460px]">
         <ImageSlider images={project.images} />
       </div>
 
@@ -63,8 +66,8 @@ export default function FeaturedProject({ project }: { project: Project }) {
       {/* Status / Note */}
       {(project.status || project.note) && (
         <div className="text-xs text-github-muted italic border-l-2 border-github-border pl-3">
-          <strong>Status:</strong>{" "}
-          {project.status?.toUpperCase()} — {project.note}
+          <strong>Status:</strong> {project.status?.toUpperCase()} —{' '}
+          {project.note}
         </div>
       )}
 

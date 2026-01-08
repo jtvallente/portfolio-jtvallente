@@ -112,7 +112,10 @@ export interface Project {
       images: ["elbigay/1.png"],
       type: "mobile",
       status: "unreleased",
-      note: "Mobile application (not a web-based system)."
+      note: "Mobile application (not a web-based system).",
+      links: [
+        {label: "App", url: "https://drive.google.com/file/d/1sF7niWOg024rPPb7a78F8jXz9xfRm2Wl/view?usp=sharing"}
+      ]
     },
   
     {
@@ -130,6 +133,18 @@ export interface Project {
         { label: "Github", url: "https://github.com/CMSC100-1S2324/group1-project.git" },
       ],
     },
+    {
+        name: "Check-GBF",
+        shortDescription:
+          "AI-powered essay checker built during a 16-hour hackathon.",
+        role: "Full Stack Developer",
+        techStack: ["AI", "NLP", "Web Development"],
+        problem:
+          "Automating essay evaluation at scale for essay entries screening.",
+        images: ["checkgbf/1.jpg", "checkgbf/2.jpg"],
+        type: "web",
+        status: "unreleased",
+      },
   
     {
       name: "MLBB Mini Game",
@@ -138,10 +153,13 @@ export interface Project {
       role: "Game Developer",
       techStack: ["Java", "OOP", "Game Development"],
       problem:
-        "Applying object-oriented programming concepts in a game setting.",
+        "Applying object-oriented programming concepts in a game setting, inspired by Mobile Legends: Bang Bang.",
       images: ["mlbb/1.png"],
       status: "unreleased",
       type: "game",
+      links: [
+        { label: "Github", url: "https://github.com/jtvallente/CMSC-22-Project-MLBB-Unrealesed.git" },
+      ],
     },
   
     {
@@ -153,13 +171,14 @@ export interface Project {
       problem:
         "Gamifying familiarity with UPLB academic programs.",
       images: ["coursedle/1.png"],
+      type: "game",
       links: [
         {
           label: "GitHub",
           url: "https://github.com/jasrelperalta/coursedle",
         },
       ],
-      type: "game",
+      status: "unreleased"
     },
   
     {
@@ -170,20 +189,17 @@ export interface Project {
       techStack: ["Java", "SQL"],
       problem:
         "Tracking tools, donations, and procurements efficiently.",
-      images: ["itvl/1.png"],
-      type: "desktop",
+      images: ["itvl/1.JPG", "itvl/2.JPG"],
+      type: "desktop", 
+      links: [
+        {
+          label: "GitHub",
+          url: "https://github.com/jtvallente/iTVL-now.git",
+        },
+      ],
+      status: "unreleased"
     },
   
-    {
-      name: "Check-GBF",
-      shortDescription:
-        "AI-powered essay checker built during a 16-hour hackathon.",
-      role: "Full Stack Developer",
-      techStack: ["AI", "NLP", "Web Development"],
-      problem:
-        "Automating essay evaluation at scale for scholarship screening.",
-      images: ["checkgbf/1.png"],
-      type: "web",
-    },
+   
   ]
   

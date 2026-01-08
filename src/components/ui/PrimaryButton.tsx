@@ -17,8 +17,9 @@ export default function PrimaryButton({
 
   const styles =
     variant === "primary"
-      ? "bg-github-accent text-black hover:opacity-90"
+      ? "bg-github-accent text-white hover:opacity-90"
       : "border border-github-border bg-github-surface hover:bg-github-border"
+      
 
   return (
     <a href={href} className={`${base} ${styles}`}>

@@ -9,11 +9,7 @@ export default function Projects() {
   return (
     <section className="space-y-16">
       <header>
-        <h1 className="text-2xl font-semibold">Projects</h1>
-        <p className="text-github-muted max-w-2xl">
-          A selection of research-driven and full-stack projects I have built,
-          focusing on AI, NLP, and real-world systems.
-        </p>
+        <h1 className="text-xl font-semibold text-github-accent">Projects</h1>
       </header>
       {featured && <FeaturedProject project={featured} />}
 

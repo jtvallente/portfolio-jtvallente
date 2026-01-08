@@ -11,7 +11,7 @@ const config: Config = {
           border: "#30363d",
           text: "#c9d1d9",
           muted: "#8b949e",
-          accent: "#58a6ff",
+          accent: "#9f7aea",
           success: "#3fb950",
           danger: "#f85149",
         },
