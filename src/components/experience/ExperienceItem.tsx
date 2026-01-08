@@ -6,10 +6,10 @@ export default function ExperienceItem({ exp }: { exp: Experience }) {
       
       {/* DATE */}
       <div className="text-right">
-        <p className="text-sm font-semibold text-github-text">
+        <p className="text-md font-semibold text-github-text">
           {exp.start}
         </p>
-        <p className="text-xs text-github-muted mt-1">
+        <p className="text-sm text-github-muted mt-1">
           {exp.end}
         </p>
       </div>

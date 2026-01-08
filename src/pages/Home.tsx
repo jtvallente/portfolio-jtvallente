@@ -4,7 +4,8 @@ import PrimaryButton from '@/components/ui/PrimaryButton'
 import ExperienceSection from '@/components/experience/ExperienceSection'
 import { Github, Linkedin, Mail, Facebook } from 'lucide-react'
 import SkillsSection from '@/components/skills/SkillsSection'
-import ProjectsCTA from "@/components/cta/ProjectsCTA"
+import ProjectsCTA from '@/components/cta/ProjectsCTA'
+import EducationSection from '@/components/education/EducationSection'
 
 import { Link } from 'react-router-dom'
 
@@ -128,8 +129,8 @@ export default function Home() {
 
       <SkillsSection />
       <ProjectsCTA />
-
       <ExperienceSection />
+      <EducationSection />
     </section>
   )
 }

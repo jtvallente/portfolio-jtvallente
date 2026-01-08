@@ -3,7 +3,7 @@ import ImageSlider from './ImageSlider'
 
 export default function FeaturedProject({ project }: { project: Project }) {
   return (
-    <section className="border border-github-border rounded-lg bg-github-surface p-6 space-y-4">
+    <section className="border border-github-accent rounded-lg bg-github-surface p-6 space-y-4">
       {/* Header */}
       <header className="space-y-1">
         <span className="text-xs uppercase text-github-muted">

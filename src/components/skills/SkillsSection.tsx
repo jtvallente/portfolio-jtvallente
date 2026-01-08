@@ -17,6 +17,10 @@ import {
     SiVite,
     SiFlutter,
     SiDart,
+    SiAdobephotoshop,
+    SiFigma,
+    SiExpress,
+    SiCanva,
   } from "react-icons/si"
   
   import SkillGroup from "./SkillGroup"
@@ -61,6 +65,7 @@ import {
             <SkillIcon icon={SiJavascript} label="JavaScript" level="Advanced" />
             <SkillIcon icon={SiSupabase} label="Supabase" level="Intermediate" />
             <SkillIcon icon={SiNodedotjs} label="Node.js" level="Advanced" />
+            <SkillIcon icon={SiExpress} label="Express.js" level="Advanced" />
           </SkillGroup>
   
           <SkillGroup title="Tools & Platforms">
@@ -69,6 +74,9 @@ import {
             <SkillIcon icon={SiVite} label="Vite" level="Beginner" />
             <SkillIcon icon={SiFlutter} label="Flutter" level="Intermediate" />
             <SkillIcon icon={SiDart} label="Dart" level="Beginner" />
+            <SkillIcon icon={SiAdobephotoshop} label="Adobe Photoshop" level="Intermediate" />
+            <SkillIcon icon={SiFigma} label="Figma" level="Advanced" />
+            <SkillIcon icon={SiCanva} label="Canva" level="Advanced" />
             <SkillIcon
               icon={FaProjectDiagram}
               label="Automation (Zapier, Keap)"

@@ -1,13 +1,23 @@
 import { Github, Linkedin, Mail, Facebook } from "lucide-react"
+import { Link } from "react-router-dom"
+import logo from "@/assets/kurator-logo.png"
 
 export default function Footer() {
   return (
     <footer className="border-t border-github-border bg-github-bg">
       <div className="max-w-5xl mx-auto px-6 py-6 text-sm text-github-muted flex flex-col sm:flex-row items-center justify-between gap-4">
         
-        <span>
-          © {new Date().getFullYear()} James Vallente
-        </span>
+        {/* Logo + Brand */}
+        <Link to="//" className="flex items-center gap-2 hover:opacity-90">
+          <img
+            src={logo}
+            alt="Kurator logo"
+            className="h-7 w-7 object-contain"
+          />
+          <span className="font-semibold text-github-muted">
+          © 2026 kurator.dev
+          </span>
+        </Link>
 
         <div className="flex items-center gap-4">
           {/* GitHub */}

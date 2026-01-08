@@ -9,7 +9,7 @@ export default function ProjectsCTA() {
           
           {/* Text */}
           <div className="space-y-2 max-w-2xl">
-            <h3 className="text-xl md:text-2xl font-semibold">
+            <h3 className="text-xl font-semibold font-semibold text-github-accent">
               Want to see these skills in action?
             </h3>
             <p className="text-github-muted text-sm md:text-base">
