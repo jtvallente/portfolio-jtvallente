@@ -24,7 +24,7 @@ export default function Home() {
           {/* Text */}
           <div className="space-y-6">
             <span className="inline-block text-xs uppercase tracking-wide text-github-muted">
-              Software Engineer · AI & NLP
+            Software Engineer · AI, NLP & Data Systems
             </span>
 
             <h1 className="text-3xl md:text-4xl font-bold leading-tight">
@@ -35,11 +35,11 @@ export default function Home() {
             </h1>
 
             <p className="text-github-muted max-w-2xl text-base md:text-lg">
-              I build and design reliable web systems and AI models with a focus on{' '}
+            I build reliable,{' '}
               <span className="text-github-text font-medium">
-                natural language processing
+              data-driven web systems and AI applications
               </span>
-              . From design-thinking process to production-ready applications.
+              , from data collection and modeling to production-ready deployment.
             </p>
 
             {/* Actions */}
@@ -49,7 +49,7 @@ export default function Home() {
               </Link>
 
               <PrimaryButton
-                href="https://drive.google.com/file/d/1PCngbi2LJouwRx2uuIA6TTpjT9D6c-n3/view?usp=sharing"
+                href="https://drive.google.com/file/d/1KqerfYIh6MgHAUuMT5DxWynkH7VF5EKW/view?usp=sharing"
                 variant="secondary"
               >
                 Download Resume
@@ -75,10 +75,12 @@ export default function Home() {
 
         <p className="text-github-muted leading-relaxed">
           I am a Computer Science graduate from the University of the
-          Philippines Los Baños. My work focuses on machine learning, NLP, and
-          full-stack development. I enjoy turning research ideas into working
-          systems. I have experience leading teams, building and designing web apps, and
-          creating and integrating APIs.
+          Philippines Los Baños. My work focuses on building data-driven systems
+          across machine learning, NLP, and full-stack development. I enjoy
+          turning research ideas into practical, end-to-end solutions, from data
+          collection and processing to deployment. I have experience leading
+          teams, designing web applications, and building APIs and integrations
+          that support scalable and reliable systems.
         </p>
 
         {/* Connect */}
