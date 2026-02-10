@@ -50,7 +50,8 @@ export interface Experience {
       bullets: [
         "Designed and optimized landing pages and sales funnels using Squarespace, Kajabi, and ClickFunnels.",
         "Created marketing assets including video edits, transcriptions, and Canva designs.",
-        "Automated email campaigns and integrations using Keap and Zapier."
+        "Automated email campaigns and integrations using Keap and Zapier.",
+        "Live Website: https://www.htbizlaw.com/"
       ],
     },
     {

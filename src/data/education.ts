@@ -13,7 +13,7 @@ export type Education = {
       location: "Los Baños, Laguna",
       year: "2025",
       honors: [
-        "Magna Cum Laude Standing",
+        "Magna Cum Laude",
         "Chancellor's & Dean's List Scholar",
         "Phi Kappa Phi Nominee",
         "Honor Society of the Philippines Nominee",
