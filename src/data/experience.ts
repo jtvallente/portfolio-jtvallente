@@ -7,6 +7,7 @@ export interface Experience {
     end: string
     bullets: string[]
     logo?: string
+    liveWebsite?: string
   }
   
   export const experiences: Experience[] = [
@@ -50,9 +51,9 @@ export interface Experience {
       bullets: [
         "Designed and optimized landing pages and sales funnels using Squarespace, Kajabi, and ClickFunnels.",
         "Created marketing assets including video edits, transcriptions, and Canva designs.",
-        "Automated email campaigns and integrations using Keap and Zapier.",
-        "Live Website: https://www.htbizlaw.com/"
+        "Automated email campaigns and integrations using Keap and Zapier."
       ],
+      liveWebsite: "https://www.htbizlaw.com/"
     },
     {
       role: "Online Store Manager",

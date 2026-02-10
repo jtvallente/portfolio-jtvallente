@@ -1,17 +1,14 @@
-import type { Experience } from "@/data/experience"
+import type { Experience } from '@/data/experience'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLink } from '@fortawesome/free-solid-svg-icons'
 
 export default function ExperienceItem({ exp }: { exp: Experience }) {
   return (
     <div className="grid grid-cols-[120px_40px_1fr] gap-6 relative">
-      
       {/* DATE */}
       <div className="text-right">
-        <p className="text-md font-semibold text-github-text">
-          {exp.start}
-        </p>
-        <p className="text-sm text-github-muted mt-1">
-          {exp.end}
-        </p>
+        <p className="text-md font-semibold text-github-text">{exp.start}</p>
+        <p className="text-sm text-github-muted mt-1">{exp.end}</p>
       </div>
 
       {/* DOT */}
@@ -24,12 +21,10 @@ export default function ExperienceItem({ exp }: { exp: Experience }) {
         {/* Header */}
         <div className="flex justify-between items-start gap-6">
           <div>
-            <h3 className="text-lg font-semibold">
-              {exp.role}
-            </h3>
+            <h3 className="text-lg font-semibold">{exp.role}</h3>
             <p className="text-sm text-github-muted">
               {exp.company} · {exp.location}
-              {exp.type ? ` · ${exp.type}` : ""}
+              {exp.type ? ` · ${exp.type}` : ''}
             </p>
           </div>
 
@@ -54,6 +49,20 @@ export default function ExperienceItem({ exp }: { exp: Experience }) {
             </li>
           ))}
         </ul>
+        {/* Live Website */}
+        {exp.liveWebsite && (
+          <div className="mt-3 flex items-center gap-2 text-sm">
+            <FontAwesomeIcon icon={faLink} className="text-github-muted" />
+            <a
+              href={exp.liveWebsite}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-github-accent hover:underline"
+            >
+              Live Website
+            </a>
+          </div>
+        )}
       </div>
     </div>
   )
