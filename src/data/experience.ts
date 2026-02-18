@@ -12,6 +12,20 @@ export interface Experience {
   
   export const experiences: Experience[] = [
     {
+      role: "Lecturer",
+      company: "ACES Polytechnic College",
+      location: "Davao del Norte, Philippines",
+      type: "On-site",
+      start: "Jan 2025",
+      end: "Jan 2025",
+      logo: "logos/aces-college.webp",
+      bullets: [
+        "Invited as a Guest Lecturer / Resource Speaker for the BTVTeD Competency-Based Review 2 (CBR2).",
+        "Delivered lectures on Teaching ICT, covering ICT fundamentals, ethics, and safe technology use.",
+        "Facilitated applied learning activities aligned with PRC standards for ICT tools and equipment."
+      ],
+    },
+    {
       role: "Resident Member",
       company: "UPLB Computer Science Society (UPLB COSS)",
       location: "Laguna, Philippines",
