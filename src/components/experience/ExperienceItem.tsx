@@ -1,57 +1,67 @@
-import type { Experience } from '@/data/experience'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLink } from '@fortawesome/free-solid-svg-icons'
+import type { Experience } from "@/data/experience"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faLink } from "@fortawesome/free-solid-svg-icons"
 
 export default function ExperienceItem({ exp }: { exp: Experience }) {
   return (
-    <div className="grid grid-cols-[120px_40px_1fr] gap-6 relative">
-      {/* DATE */}
-      <div className="text-right">
-        <p className="text-md font-semibold text-github-text">{exp.start}</p>
-        <p className="text-sm text-github-muted mt-1">{exp.end}</p>
+    <li className="relative pb-12 ps-10">
+      {/* Marker centered on the timeline line */}
+      <span
+        className="
+          absolute start-0 top-1 flex h-6 w-6 items-center justify-center
+          -translate-x-1/2
+          rounded-full border border-github-accent bg-github-bg
+          ring-8 ring-github-bg
+        "
+      >
+        <span className="h-2.5 w-2.5 rounded-full bg-github-accent" />
+      </span>
+
+      {/* Date + type pill row */}
+      <div className="flex flex-wrap items-center gap-2">
+        <time className="inline-flex items-center rounded-md border border-github-border bg-github-surface px-2 py-0.5 text-xs font-medium text-github-text">
+          {exp.start} — {exp.end}
+        </time>
+
+        {exp.type ? (
+          <span className="inline-flex items-center rounded-md border border-github-border bg-github-surface px-2 py-0.5 text-xs font-medium text-github-muted">
+            {exp.type}
+          </span>
+        ) : null}
       </div>
 
-      {/* DOT */}
-      <div className="flex justify-center">
-        <span className="mt-1 h-4 w-4 rounded-full bg-github-bg border-2 border-github-accent" />
-      </div>
-
-      {/* CONTENT */}
-      <div className="max-w-2xl">
-        {/* Header */}
-        <div className="flex justify-between items-start gap-6">
-          <div>
-            <h3 className="text-lg font-semibold">{exp.role}</h3>
-            <p className="text-sm text-github-muted">
+      {/* Content card */}
+      <div className="mt-4 rounded-xl border border-github-border bg-github-surface p-5">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+          <div className="min-w-0">
+            <h3 className="text-lg font-semibold text-github-text">{exp.role}</h3>
+            <p className="mt-1 text-sm text-github-muted">
               {exp.company} · {exp.location}
-              {exp.type ? ` · ${exp.type}` : ''}
             </p>
           </div>
 
-          {/* Logo */}
-          {exp.logo && (
-            <div className="bg-white rounded-lg p-2 border border-github-border shadow-sm">
+          {exp.logo ? (
+            <div className="shrink-0 self-start rounded-lg border border-github-border bg-white p-2 shadow-sm">
               <img
                 src={exp.logo}
                 alt={`${exp.company} logo`}
-                className="h-12 w-auto object-contain"
+                className="h-10 w-auto object-contain"
               />
             </div>
-          )}
+          ) : null}
         </div>
 
-        {/* Bullets */}
         <ul className="mt-4 space-y-2 text-sm text-github-muted">
-          {exp.bullets.map((bullet, index) => (
-            <li key={index} className="flex gap-3">
-              <span className="mt-2 h-2 w-2 rounded-full bg-github-muted" />
-              <span>{bullet}</span>
+          {exp.bullets.map((bullet, idx) => (
+            <li key={idx} className="flex gap-3">
+              <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-github-muted" />
+              <span className="leading-relaxed">{bullet}</span>
             </li>
           ))}
         </ul>
-        {/* Live Website */}
-        {exp.liveWebsite && (
-          <div className="mt-3 flex items-center gap-2 text-sm">
+
+        {exp.liveWebsite ? (
+          <div className="mt-4 flex items-center gap-2 text-sm">
             <FontAwesomeIcon icon={faLink} className="text-github-muted" />
             <a
               href={exp.liveWebsite}
@@ -62,8 +72,8 @@ export default function ExperienceItem({ exp }: { exp: Experience }) {
               Live Website
             </a>
           </div>
-        )}
+        ) : null}
       </div>
-    </div>
+    </li>
   )
 }

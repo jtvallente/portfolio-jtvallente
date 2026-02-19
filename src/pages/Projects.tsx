@@ -1,7 +1,7 @@
-import { useEffect, useRef } from "react"
-import * as THREE from "three"
+import { useEffect, useRef } from 'react'
+import * as THREE from 'three'
 // @ts-expect-error Vanta does not have TypeScript definitions
-import NET from "vanta/dist/vanta.net.min.js"
+import NET from 'vanta/dist/vanta.net.min.js'
 
 import { projects } from '@/data/projects'
 import FeaturedProject from '../components/project/FeaturedProject'
@@ -20,18 +20,20 @@ export default function Projects() {
       touchControls: true,
       gyroControls: false,
 
-      minHeight: 200,
-      minWidth: 200,
-      scale: 1.0,
-      scaleMobile: 1.0,
+      backgroundColor: 0x0d1117,
 
-      backgroundColor: 0x0d1117, // github.bg
-      color: 0x9f7aea, 
+      color: 0x9f7aea, // gray for lines (or dots depending on build)
+      color2: 0x4b5563, // keep dots purple (or lines depending on build)
 
-      // reduce noise (less webby)
-      points: 9.0,
-      maxDistance: 18.0,
+      points: 8.0,
+      maxDistance: 14.0,
       spacing: 26.0,
+    })
+
+    // Force the line color AFTER init (works when init mapping is weird)
+    effect.setOptions({
+      color: 0x9f7aea,
+      color2: 0x4b5563,
     })
 
     return () => {
@@ -51,9 +53,9 @@ export default function Projects() {
           className="absolute inset-0"
           style={{
             WebkitMaskImage:
-              "linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 22%, rgba(0,0,0,0.08) 42%, rgba(0,0,0,0.08) 58%, rgba(0,0,0,1) 78%, rgba(0,0,0,1) 100%)",
+              'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 22%, rgba(0,0,0,0.08) 42%, rgba(0,0,0,0.08) 58%, rgba(0,0,0,1) 78%, rgba(0,0,0,1) 100%)',
             maskImage:
-              "linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 22%, rgba(0,0,0,0.08) 42%, rgba(0,0,0,0.08) 58%, rgba(0,0,0,1) 78%, rgba(0,0,0,1) 100%)",
+              'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 22%, rgba(0,0,0,0.08) 42%, rgba(0,0,0,0.08) 58%, rgba(0,0,0,1) 78%, rgba(0,0,0,1) 100%)',
           }}
         />
       </div>

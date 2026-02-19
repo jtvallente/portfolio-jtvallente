@@ -1,0 +1,11 @@
+{
+    "name": "portfolio-chat-api",
+    "private": true,
+    "type": "module",
+    "dependencies": {
+        "@google/genai": "^1.0.0"
+    },
+    "devDependencies": {
+        "@vercel/node": "^5.6.5"
+    }
+}

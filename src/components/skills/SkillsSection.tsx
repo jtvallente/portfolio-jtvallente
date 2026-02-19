@@ -25,7 +25,7 @@ import SkillIcon from './SkillIcon'
 
 export default function SkillsSection() {
   return (
-    <section className="space-y-8">
+    <section id="skills" className="space-y-8">
       <h2 className="text-xl font-semibold text-github-accent">Skills</h2>
 
       <div className="grid gap-6 md:grid-cols-2">

@@ -11,6 +11,7 @@ import { Github, Linkedin, Mail, Facebook } from 'lucide-react'
 import SkillsSection from '@/components/skills/SkillsSection'
 import ProjectsCTA from '@/components/cta/ProjectsCTA'
 import EducationSection from '@/components/education/EducationSection'
+import ExperienceYears from '@/components/experience/ExperienceYears'
 
 import { Link } from 'react-router-dom'
 
@@ -26,18 +27,21 @@ export default function Home() {
       mouseControls: true,
       touchControls: true,
       gyroControls: false,
-      minHeight: 200,
-      minWidth: 200,
-      scale: 1.0,
-      scaleMobile: 1.0,
 
-      backgroundColor: 0x0d1117, // keep github.bg
-      color: 0x9f7aea, // blue lines, not white
+      backgroundColor: 0x0d1117,
 
-      // reduce noise (less webby)
-      points: 9.0,
-      maxDistance: 18.0,
+      color: 0x9f7aea, // gray for lines (or dots depending on build)
+      color2: 0x4b5563, // keep dots purple (or lines depending on build)
+
+      points: 8.0,
+      maxDistance: 14.0,
       spacing: 26.0,
+    })
+
+    // Force the line color AFTER init (works when init mapping is weird)
+    effect.setOptions({
+      color: 0x9f7aea,
+      color2: 0x4b5563,
     })
 
     return () => {
@@ -63,7 +67,7 @@ export default function Home() {
       </div>
 
       {/* Your page content (unchanged) */}
-      <section className="space-y-16">
+      <section className="space-y-10">
         {/* ================= HERO ================= */}
         <section className="relative overflow-hidden rounded-2xl  bg-github-surface p-8 md:p-12 shadow-[0_0_25px_rgba(168,85,247,0.35)]">
           {/* Glow / Accent */}
@@ -109,19 +113,24 @@ export default function Home() {
             </div>
 
             {/* Profile Image */}
-            <div className="flex justify-center md:justify-end">
+            <div className="relative">
+              <div className="absolute inset-0 rounded-full bg-github-accent/20 blur-2xl" />
               <img
                 src={profileImg}
                 alt="James Vallente"
-                className="w-40 h-40 rounded-full border border-github-border
-                       object-cover bg-github-surface"
+                className="
+      relative w-40 h-40 rounded-full object-cover
+      border border-github-border
+    "
               />
             </div>
           </div>
         </section>
 
+        <ExperienceYears />
+
         {/* ================= ABOUT ================= */}
-        <section className="max-w-5xl space-y-6 border border-github-border rounded-xl bg-github-surface p-6">
+        <section id="about" className="max-w-5xl space-y-6 border border-github-border rounded-xl bg-github-surface p-6">
           <h2 className="text-xl font-semibold text-github-accent">About Me</h2>
 
           <p className="text-github-muted leading-relaxed">

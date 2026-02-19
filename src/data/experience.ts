@@ -16,8 +16,8 @@ export interface Experience {
       company: "ACES Polytechnic College",
       location: "Davao del Norte, Philippines",
       type: "On-site",
-      start: "Jan 2025",
-      end: "Jan 2025",
+      start: "Jan 2026",
+      end: "Jan 2026",
       logo: "logos/aces-college.webp",
       bullets: [
         "Invited as a Guest Lecturer / Resource Speaker for the BTVTeD Competency-Based Review 2 (CBR2).",

@@ -4,19 +4,15 @@ import ExperienceItem from "./ExperienceItem"
 export default function ExperienceSection() {
   return (
     <section id="experience" className="relative">
-      <h2 className="text-xl font-semibold mb-12 font-semibold text-github-accent">Experiences</h2>
+      <h2 className="mb-10 text-xl font-semibold text-github-accent">
+        Experiences
+      </h2>
 
-      {/* Timeline line */}
-      <div className="absolute left-[163px] top-24 bottom-0 w-px bg-github-border" />
-
-      <div className="space-y-20">
+      <ol className="relative border-s border-github-border">
         {experiences.map((exp, index) => (
-          <ExperienceItem
-            key={`${exp.company}-${index}`}
-            exp={exp}
-          />
+          <ExperienceItem key={`${exp.company}-${index}`} exp={exp} />
         ))}
-      </div>
+      </ol>
     </section>
   )
 }
