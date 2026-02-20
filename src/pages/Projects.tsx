@@ -42,7 +42,7 @@ export default function Projects() {
   }, [])
 
   const featured = projects.find((p) => p.featured)
-  const others = projects.filter((p) => !p.featured).slice(0, 9)
+  const others = projects.filter((p) => !p.featured).slice(0, 10)
 
   return (
     <>

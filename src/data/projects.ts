@@ -10,7 +10,7 @@ export interface Project {
       label: string
       url: string
     }[]
-    status?: "live" | "inactive" | "unreleased"
+    status?: "live" | "inactive" | "unreleased" | "locally deployed"
     note?: string
     featured?: boolean
     type?: "web" | "desktop" | "mobile" | "research" | "game"
@@ -51,7 +51,30 @@ export interface Project {
       featured: true,
       type: "research",
     },
-  
+    {
+      name: "Jeopardy Live Scoreboard",
+      shortDescription:
+        "A local-network, real-time Jeopardy scoring system built for the 42nd Computer Science Week of UPLB COSS.",
+      role: "Full-Stack Developer",
+      techStack: [
+        "React",
+        "Node.js",
+        "Express",
+        "Socket.IO",
+        "TypeScript",
+        "WebSockets",
+        "Local Network Deployment"
+      ],
+      problem:
+        "Managing real-time scoring, bet validation, elimination logic, and tie-breaker resolution across multiple proctors and a central controller without data inconsistencies or race conditions during a live event.",
+      images: ["coss-jeop/jeop-1.png","coss-jeop/jeop-2.png"],
+      status: "locally deployed",
+      type: "web",
+      links: [
+        { label: "GitHub", url: "https://github.com/jtvallente/COSS-Jeopardy-Scoresheet.git" },
+      ],
+    },
+    
     {
       name: "UPLB Halina",
       shortDescription:
