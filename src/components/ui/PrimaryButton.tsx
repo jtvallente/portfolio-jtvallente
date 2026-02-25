@@ -2,14 +2,17 @@ import type { ReactNode } from "react"
 
 interface PrimaryButtonProps {
   children: ReactNode
-  href: string
+  href?: string
+  onClick?: () => void
+  type?: "button" | "submit"
   variant?: "primary" | "secondary"
-  
 }
 
 export default function PrimaryButton({
   children,
   href,
+  onClick,
+  type = "button",
   variant = "primary",
 }: PrimaryButtonProps) {
   const base =
@@ -21,9 +24,17 @@ export default function PrimaryButton({
       : "border border-github-border bg-github-surface hover:bg-github-border"
       
 
+  if (href && !onClick) {
+    return (
+      <a href={href} className={`${base} ${styles}`}>
+        {children}
+      </a>
+    )
+  }
+
   return (
-    <a href={href} className={`${base} ${styles}`}>
+    <button type={type} onClick={onClick} className={`${base} ${styles}`}>
       {children}
-    </a>
+    </button>
   )
 }

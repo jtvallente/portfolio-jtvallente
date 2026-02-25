@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import * as THREE from 'three'
 // @ts-expect-error: The "vanta.net.min.js" module does not have TypeScript definitions
 import NET from 'vanta/dist/vanta.net.min.js'
@@ -17,6 +17,12 @@ import { Link } from 'react-router-dom'
 
 export default function Home() {
   const netRef = useRef<HTMLDivElement | null>(null)
+  const [resumeOpen, setResumeOpen] = useState(false)
+  const [requestEmail, setRequestEmail] = useState('')
+  const [requestReason, setRequestReason] = useState('')
+  const [requestStatus, setRequestStatus] = useState<
+    'idle' | 'submitting' | 'success' | 'error'
+  >('idle')
 
   useEffect(() => {
     if (!netRef.current) return
@@ -104,8 +110,8 @@ export default function Home() {
                 </Link>
 
                 <PrimaryButton
-                  href="https://drive.google.com/file/d/1KqerfYIh6MgHAUuMT5DxWynkH7VF5EKW/view?usp=sharing"
                   variant="secondary"
+                  onClick={() => setResumeOpen(true)}
                 >
                   Download Resume
                 </PrimaryButton>
@@ -194,6 +200,120 @@ export default function Home() {
         <ExperienceSection />
         <EducationSection />
       </section>
+
+      {resumeOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Request resume access"
+        >
+          <div className="w-full max-w-lg rounded-2xl border border-github-border bg-github-surface p-6 shadow-2xl">
+            <div className="flex items-start justify-between gap-4">
+              <div className="space-y-1">
+                <h3 className="text-lg font-semibold text-github-text">
+                  Request Resume Access
+                </h3>
+                <p className="text-sm text-github-muted">
+                  Send your details here and I will grant access to the resume
+                  as soon as I can.
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setResumeOpen(false)}
+                className="rounded-md border border-github-border px-3 py-1 text-sm text-github-muted hover:text-github-text"
+                aria-label="Close"
+              >
+                Close
+              </button>
+            </div>
+
+            <form
+              className="mt-5 space-y-4"
+              onSubmit={async (event) => {
+                event.preventDefault()
+                if (requestStatus === 'submitting') return
+
+                try {
+                  setRequestStatus('submitting')
+
+                  const res = await fetch('https://formspree.io/f/mqedwjgr', {
+                    method: 'POST',
+                    headers: {
+                      'Content-Type': 'application/json',
+                      Accept: 'application/json',
+                    },
+                    body: JSON.stringify({
+                      email: requestEmail,
+                      message: requestReason,
+                      source: 'portfolio-resume-request',
+                    }),
+                  })
+
+                  if (!res.ok) {
+                    throw new Error('Request failed')
+                  }
+
+                  setRequestStatus('success')
+                  setRequestEmail('')
+                  setRequestReason('')
+                } catch {
+                  setRequestStatus('error')
+                }
+              }}
+            >
+              <label className="block space-y-2 text-sm">
+                <span className="text-github-muted">Your email</span>
+                <input
+                  type="email"
+                  required
+                  value={requestEmail}
+                  onChange={(event) => setRequestEmail(event.target.value)}
+                  className="w-full rounded-md border border-github-border bg-github-surface px-3 py-2 text-github-text outline-none focus:border-github-accent"
+                  placeholder="you@company.com"
+                />
+              </label>
+
+              <label className="block space-y-2 text-sm">
+                <span className="text-github-muted">
+                  Message (why you want access)
+                </span>
+                <textarea
+                  rows={4}
+                  value={requestReason}
+                  onChange={(event) => setRequestReason(event.target.value)}
+                  className="w-full rounded-md border border-github-border bg-github-surface px-3 py-2 text-github-text outline-none focus:border-github-accent"
+                  placeholder="Recruiter role, project review, etc."
+                />
+              </label>
+
+              {requestStatus === 'success' && (
+                <p className="text-sm text-emerald-400">
+                  Request sent. I will review it and reply by email.
+                </p>
+              )}
+
+              {requestStatus === 'error' && (
+                <p className="text-sm text-red-400">
+                  Something went wrong. Please try again.
+                </p>
+              )}
+
+              <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                <span className="text-xs text-github-muted">
+                  I will review your request and share access by email.
+                </span>
+                <PrimaryButton type="submit">
+                  {requestStatus === 'submitting'
+                    ? 'Sending...'
+                    : 'Request Access'}
+                </PrimaryButton>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </>
   )
 }
