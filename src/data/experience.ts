@@ -55,7 +55,7 @@ export interface Experience {
       ],
     },
     {
-      role: "Virtual Assistant",
+      role: "Web & Marketing Automation Specialist",
       company: "HTBIZ Law",
       location: "Maryland, USA",
       type: "Remote",

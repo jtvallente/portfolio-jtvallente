@@ -34,34 +34,28 @@ export default function ChatWidget() {
       setOpen(false)
       return
     }
-  
+
     if (action.type === 'OPEN_URL') {
       window.open(action.url, '_blank', 'noopener,noreferrer')
       return
     }
-  
+
     if (action.type === 'OPEN_SECTION') {
-      // If a route is provided, navigate first (important!)
       if (action.to) {
         navigate(action.to)
         setOpen(false)
-  
-        // wait for route to render
         setTimeout(() => {
           const el = document.getElementById(action.sectionId)
           el?.scrollIntoView({ behavior: 'smooth', block: 'start' })
         }, 250)
-  
         return
       }
-  
-      // Same-page scroll
+
       const el = document.getElementById(action.sectionId)
       if (el) {
         el.scrollIntoView({ behavior: 'smooth', block: 'start' })
         setOpen(false)
       } else {
-        // optional: try again a bit later (in case content loads)
         setTimeout(() => {
           const retry = document.getElementById(action.sectionId)
           retry?.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -72,14 +66,13 @@ export default function ChatWidget() {
   }
 
   const [messages, setMessages] = useState<ChatMsg[]>(() => {
-    // Persisted session (optional)
     const raw = localStorage.getItem('james_chat_messages')
     if (!raw) {
       return [
         {
           id: uid(),
           role: 'assistant',
-          text: 'Hi! I’m James’ portfolio assistant. Ask me about projects, research, experience, skills, or education.',
+          text: 'Hi! I\'m James\' portfolio assistant. Ask me about projects, research, experience, skills, or education.',
           ts: Date.now(),
         },
       ]
@@ -92,7 +85,7 @@ export default function ChatWidget() {
             {
               id: uid(),
               role: 'assistant',
-              text: 'Hi! I’m James’ portfolio assistant. Ask me about projects, research, experience, skills, or education.',
+              text: 'Hi! I\'m James\' portfolio assistant. Ask me about projects, research, experience, skills, or education.',
               ts: Date.now(),
             },
           ]
@@ -101,7 +94,7 @@ export default function ChatWidget() {
         {
           id: uid(),
           role: 'assistant',
-          text: 'Hi! I’m James’ portfolio assistant. Ask me about projects, research, experience, skills, or education.',
+          text: 'Hi! I\'m James\' portfolio assistant. Ask me about projects, research, experience, skills, or education.',
           ts: Date.now(),
         },
       ]
@@ -111,19 +104,16 @@ export default function ChatWidget() {
   const listRef = useRef<HTMLDivElement | null>(null)
   const inputRef = useRef<HTMLInputElement | null>(null)
 
-  // Persist messages
   useEffect(() => {
     localStorage.setItem('james_chat_messages', JSON.stringify(messages))
   }, [messages])
 
-  // Auto-scroll on new messages / typing
   useEffect(() => {
     const el = listRef.current
     if (!el) return
     el.scrollTop = el.scrollHeight
   }, [messages, isTyping, open])
 
-  // Focus input on open
   useEffect(() => {
     if (!open) return
     const t = setTimeout(() => inputRef.current?.focus(), 50)
@@ -133,7 +123,7 @@ export default function ChatWidget() {
   const quickPrompts = useMemo(
     () => [
       'What projects has James built?',
-      'Summarize James’ AI/ML experience.',
+      "Summarize James' AI/ML experience.",
       'What tech stack does James use?',
       'What research has James done?',
     ],
@@ -182,7 +172,7 @@ export default function ChatWidget() {
       const botMsg: ChatMsg = {
         id: uid(),
         role: 'assistant',
-        text: data.reply || 'Sorry — I didn’t get a response. Try again.',
+        text: data.reply || "Sorry — I didn't get a response. Try again.",
         ts: Date.now(),
         actions: data.actions ?? [],
       }
@@ -200,14 +190,13 @@ export default function ChatWidget() {
           ? err
           : JSON.stringify(err)
 
-      // Fallback retrieval
       const { chunks, actions } = retrieveKeyword(trimmed, 6)
 
       const botMsg: ChatMsg = {
         id: uid(),
         role: 'assistant',
         text:
-          `❌ I couldn’t reach the server.\n` +
+          `❌ I couldn't reach the server.\n` +
           `API_URL: ${API_URL || '(missing)'}\n` +
           `Error: ${errText}\n\n` +
           `Local retrieval matches:\n` +
@@ -232,7 +221,7 @@ export default function ChatWidget() {
       {
         id: uid(),
         role: 'assistant',
-        text: 'Hi! I’m James’ portfolio assistant. Ask me about projects, research, experience, skills, or education.',
+        text: 'Hi! I\'m James\' portfolio assistant. Ask me about projects, research, experience, skills, or education.',
         ts: Date.now(),
       },
     ]
@@ -242,23 +231,48 @@ export default function ChatWidget() {
 
   return (
     <>
-      {/* Floating Button */}
-      <button
-        type="button"
-        onClick={() => setOpen((v) => !v)}
-        className="
-          fixed bottom-5 right-5 z-[60]
-          inline-flex items-center gap-2
-          rounded-full border border-github-border bg-github-surface
-          px-4 py-3 text-sm font-medium text-github-text
-          shadow-[0_10px_30px_rgba(0,0,0,0.35)]
-          hover:bg-github-bg transition
-        "
-        aria-label="Chat with James"
-      >
-        <MessageCircle className="h-5 w-5 text-github-accent" />
-        <span className="hidden sm:inline">Chat with James</span>
-      </button>
+      {/* Floating Button with pulse rings + notification dot */}
+      <div className="fixed bottom-5 right-5 z-[60]">
+        {/* Pulse rings — only animate when chat is closed */}
+        {!open && (
+          <>
+            <span
+              className="absolute inset-0 rounded-full animate-ping bg-github-accent opacity-20 pointer-events-none"
+              style={{ animationDuration: '2.5s' }}
+            />
+            <span
+              className="absolute inset-0 rounded-full animate-ping bg-github-accent opacity-10 pointer-events-none"
+              style={{ animationDuration: '2.5s', animationDelay: '0.5s' }}
+            />
+          </>
+        )}
+
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          className="
+            relative inline-flex items-center gap-2
+            rounded-full border border-github-accent/40 bg-github-surface
+            px-4 py-3 text-sm font-medium text-github-text
+            shadow-[0_10px_30px_rgba(0,0,0,0.35),0_0_18px_rgba(88,166,255,0.25)]
+            hover:shadow-[0_10px_30px_rgba(0,0,0,0.35),0_0_28px_rgba(88,166,255,0.45)]
+            hover:border-github-accent/70
+            transition-all duration-300
+          "
+          aria-label="Chat with James"
+        >
+          <MessageCircle className="h-5 w-5 text-github-accent" />
+          <span className="hidden sm:inline">Chat with James</span>
+        </button>
+
+        {/* Notification dot — only show when closed */}
+        {!open && (
+          <span className="absolute -top-1 -right-1 flex h-3.5 w-3.5 pointer-events-none">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75" />
+            <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-red-500 border-2 border-github-surface" />
+          </span>
+        )}
+      </div>
 
       {/* Panel */}
       {open && (
@@ -363,11 +377,11 @@ export default function ChatWidget() {
                             type="button"
                             onClick={() => runAction(a)}
                             className="
-          inline-flex items-center gap-2 rounded-full
-          border border-github-border bg-github-bg
-          px-3 py-1 text-xs text-github-text
-          hover:bg-github-surface transition
-        "
+                              inline-flex items-center gap-2 rounded-full
+                              border border-github-border bg-github-bg
+                              px-3 py-1 text-xs text-github-text
+                              hover:bg-github-surface transition
+                            "
                           >
                             {a.label}
                           </button>
@@ -421,7 +435,7 @@ export default function ChatWidget() {
             </div>
 
             <p className="mt-2 text-[11px] text-github-muted">
-              Answers will be limited to James’ public portfolio info.
+              Answers will be limited to James' public portfolio info.
             </p>
           </form>
         </div>
