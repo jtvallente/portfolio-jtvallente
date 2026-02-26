@@ -238,9 +238,11 @@ export default function Home() {
                 try {
                   setRequestStatus('submitting')
 
-                  const res = await fetch(
-                    'https://portfolio-chat-api-five.vercel.app/api/resume-request',
-                    {
+                  const apiBase =
+                    (import.meta.env.VITE_API_BASE_URL as string) ||
+                    'https://portfolio-chat-api-james-lourence-vallentes-projects.vercel.app'
+
+                  const res = await fetch(`${apiBase}/api/resume-request`, {
                     method: 'POST',
                     headers: {
                       'Content-Type': 'application/json',
@@ -252,8 +254,7 @@ export default function Home() {
                       source: 'portfolio-resume-request',
                       website: '',
                     }),
-                  }
-                  )
+                  })
 
                   if (!res.ok) {
                     throw new Error('Request failed')

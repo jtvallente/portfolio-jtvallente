@@ -297,7 +297,7 @@ export default function ChatWidget() {
                   Chat with James
                 </div>
                 <div className="text-xs text-github-muted">
-                  Portfolio assistant (English)
+                  AI Portfolio assistant
                 </div>
               </div>
             </div>

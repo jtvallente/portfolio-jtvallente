@@ -144,9 +144,11 @@ export default function Navbar() {
                 try {
                   setContactStatus("submitting")
 
-                  const res = await fetch(
-                    "https://portfolio-chat-api-five.vercel.app/api/contact",
-                    {
+                  const apiBase =
+                    (import.meta.env.VITE_API_BASE_URL as string) ||
+                    "https://portfolio-chat-api-james-lourence-vallentes-projects.vercel.app"
+
+                  const res = await fetch(`${apiBase}/api/contact`, {
                     method: "POST",
                     headers: {
                       "Content-Type": "application/json",
@@ -161,8 +163,7 @@ export default function Navbar() {
                       source: "portfolio-contact",
                       website: "",
                     }),
-                  }
-                  )
+                  })
 
                   if (!res.ok) {
                     throw new Error("Request failed")
