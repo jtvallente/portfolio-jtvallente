@@ -238,7 +238,9 @@ export default function Home() {
                 try {
                   setRequestStatus('submitting')
 
-                  const res = await fetch('https://formspree.io/f/mqedwjgr', {
+                  const res = await fetch(
+                    'https://portfolio-chat-api-five.vercel.app/api/resume-request',
+                    {
                     method: 'POST',
                     headers: {
                       'Content-Type': 'application/json',
@@ -248,8 +250,10 @@ export default function Home() {
                       email: requestEmail,
                       message: requestReason,
                       source: 'portfolio-resume-request',
+                      website: '',
                     }),
-                  })
+                  }
+                  )
 
                   if (!res.ok) {
                     throw new Error('Request failed')

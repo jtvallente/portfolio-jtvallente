@@ -144,7 +144,9 @@ export default function Navbar() {
                 try {
                   setContactStatus("submitting")
 
-                  const res = await fetch("https://formspree.io/f/xnjblrww", {
+                  const res = await fetch(
+                    "https://portfolio-chat-api-five.vercel.app/api/contact",
+                    {
                     method: "POST",
                     headers: {
                       "Content-Type": "application/json",
@@ -157,8 +159,10 @@ export default function Navbar() {
                       subject: contactSubject,
                       message: contactMessage,
                       source: "portfolio-contact",
+                      website: "",
                     }),
-                  })
+                  }
+                  )
 
                   if (!res.ok) {
                     throw new Error("Request failed")
