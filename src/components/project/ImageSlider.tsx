@@ -6,22 +6,29 @@ interface ImageSliderProps {
 
 export default function ImageSlider({ images }: ImageSliderProps) {
   const [index, setIndex] = useState(0)
+  const baseUrl = import.meta.env.BASE_URL ?? "/"
+  const resolvedImages = images.map((src) =>
+    `${baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`}${src.replace(
+      /^\//,
+      ""
+    )}`
+  )
 
   const prev = () =>
-    setIndex((i) => (i === 0 ? images.length - 1 : i - 1))
+    setIndex((i) => (i === 0 ? resolvedImages.length - 1 : i - 1))
 
   const next = () =>
-    setIndex((i) => (i === images.length - 1 ? 0 : i + 1))
+    setIndex((i) => (i === resolvedImages.length - 1 ? 0 : i + 1))
 
   return (
     <div className="relative border border-github-border rounded-md overflow-hidden bg-github-bg">
       <img
-        src={images[index]}
+        src={resolvedImages[index]}
         alt={`Project screenshot ${index + 1}`}
-        className="w-full aspect-[5/3] object-cover"
+        className="w-full aspect-[5/3] object-contain bg-github-canvas"
       />
 
-      {images.length > 1 && (
+      {resolvedImages.length > 1 && (
         <>
           <button
             onClick={prev}

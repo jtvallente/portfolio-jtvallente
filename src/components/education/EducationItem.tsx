@@ -1,50 +1,64 @@
 import type { Education } from "@/data/education"
 
 export default function EducationItem({ edu }: { edu: Education }) {
+  const baseUrl = import.meta.env.BASE_URL ?? "/"
+  const logoSrc = edu.logo
+    ? `${baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`}${edu.logo.replace(
+        /^\//,
+        ""
+      )}`
+    : undefined
+  const initials = edu.school
+    .split(" ")
+    .filter(Boolean)
+    .map((word) => word[0])
+    .slice(0, 3)
+    .join("")
+
   return (
-    <li className="relative pb-10 ps-10">
-      {/* Marker centered on the timeline line */}
-      <span
-        className="
-          absolute start-0 top-1 flex h-6 w-6 items-center justify-center
-          -translate-x-1/2
-          rounded-full border border-github-accent bg-github-bg
-          ring-8 ring-github-bg
-        "
-      >
-        <span className="h-2.5 w-2.5 rounded-full bg-github-accent" />
-      </span>
+    <article className="mx-auto flex h-full w-full max-w-5xl flex-col gap-4 rounded-2xl border border-github-border bg-github-surface p-5 shadow-[0_8px_30px_rgba(0,0,0,0.25)] sm:flex-row sm:items-stretch sm:gap-6">
+      <div className="flex items-center gap-4 sm:flex-none">
+        <div className="h-20 w-auto overflow-hidden rounded-xl border border-github-border bg-white px-4 py-2 sm:h-full sm:w-28 sm:py-4">
+          {logoSrc ? (
+            <img
+              src={logoSrc}
+              alt={`${edu.school} logo`}
+              className="h-full w-full object-contain"
+              loading="lazy"
+            />
+          ) : (
+            <div className="flex h-full w-full items-center justify-center text-xs font-semibold text-github-muted">
+              {initials}
+            </div>
+          )}
+        </div>
+        <div>
+          <time className="inline-flex items-center rounded-full border border-github-border bg-github-bg px-2.5 py-1 text-xs font-semibold text-github-text">
+            {edu.year}
+          </time>
+          <h3 className="mt-2 text-base font-semibold text-github-text">
+            {edu.school}
+          </h3>
+          <p className="text-xs text-github-muted">{edu.location}</p>
+        </div>
+      </div>
 
-      {/* Year pill */}
-      <time className="inline-flex items-center rounded-md border border-github-border bg-github-surface px-2 py-0.5 text-xs font-medium text-github-text">
-        {edu.year}
-      </time>
-
-      {/* Content card */}
-      <div className="mt-4 rounded-xl border border-github-border bg-github-surface p-5">
-        <h3 className="text-lg font-semibold text-github-text">
-          {edu.school}
-        </h3>
-
+      <div className="flex flex-1 flex-col justify-center gap-3 sm:items-end sm:text-right">
         {edu.degree ? (
-          <p className="mt-1 text-sm text-github-muted">
-            {edu.degree} · {edu.location}
-          </p>
-        ) : (
-          <p className="mt-1 text-sm text-github-muted">{edu.location}</p>
-        )}
+          <div className="text-sm text-github-muted">
+            <span className="text-xs uppercase tracking-[0.18em] text-github-muted/80">
+              Course / Track
+            </span>
+            <p className="mt-1 text-sm text-github-text">{edu.degree}</p>
+          </div>
+        ) : null}
 
-        {/* Honors */}
         {edu.honors?.length ? (
-          <div className="mt-3 flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2 sm:justify-end">
             {edu.honors.map((honor) => (
               <span
                 key={honor}
-                className="
-                  text-sm px-2 py-0.5 rounded-full
-                  bg-purple-500/10 text-purple-300
-                  border border-purple-500/20
-                "
+                className="rounded-full border border-github-accent/30 bg-github-accent/10 px-2.5 py-1 text-xs text-github-accent"
               >
                 {honor}
               </span>
@@ -52,6 +66,6 @@ export default function EducationItem({ edu }: { edu: Education }) {
           </div>
         ) : null}
       </div>
-    </li>
+    </article>
   )
 }

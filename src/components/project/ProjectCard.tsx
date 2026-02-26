@@ -1,20 +1,25 @@
+import { useMemo, useState } from "react"
 import type { Project } from "@/data/projects"
+import ImageSlider from "./ImageSlider"
 
 interface ProjectCardProps {
   project: Project
 }
 
 export default function ProjectCard({ project }: ProjectCardProps) {
+  const [showDetails, setShowDetails] = useState(false)
+  const maxTech = 6
+  const visibleTech = useMemo(
+    () => project.techStack.slice(0, maxTech),
+    [project.techStack]
+  )
+  const hiddenTechCount = Math.max(project.techStack.length - maxTech, 0)
+
   return (
     <article className="border border-github-border rounded-lg bg-github-surface overflow-hidden flex flex-col">
       {/* Screenshot (16:9, NOT cropped) */}
       <div className="bg-github-canvas">
-        <img
-          src={project.images?.[0]}
-          alt={`${project.name} screenshot`}
-          className="w-full aspect-video object-contain"
-          loading="lazy"
-        />
+        <ImageSlider images={project.images} />
       </div>
 
       {/* Content */}
@@ -45,7 +50,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
         {/* Tech Stack */}
         <div className="flex flex-wrap gap-1.5">
-          {project.techStack.map((tech) => (
+          {visibleTech.map((tech) => (
             <span
               key={tech}
               className="text-[10px] px-2 py-0.5 rounded border border-github-border"
@@ -53,16 +58,52 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               {tech}
             </span>
           ))}
+          {hiddenTechCount > 0 && (
+            <span className="text-[10px] px-2 py-0.5 rounded border border-github-border text-github-muted">
+              +{hiddenTechCount} more
+            </span>
+          )}
         </div>
 
-        {/* Status / Note (WHY inactive / no demo) */}
-        {(project.note || project.status) && (
-          <div className="text-[11px] text-github-muted italic border-l-2 border-github-border pl-2">
-            {project.note
-              ? project.note
-              : project.status !== "live"
-              ? "This project is not currently publicly accessible."
-              : null}
+        <button
+          type="button"
+          onClick={() => setShowDetails((prev) => !prev)}
+          className="text-xs text-github-accent hover:underline"
+        >
+          {showDetails ? "Hide details" : "Show details"}
+        </button>
+
+        {showDetails && (
+          <div className="space-y-3 text-xs text-github-muted">
+            <div className="border-t border-github-border pt-3">
+              <span className="text-github-text font-semibold">
+                Problem:
+              </span>{" "}
+              {project.problem}
+            </div>
+
+            {project.highlights?.length ? (
+              <div>
+                <span className="text-github-text font-semibold">
+                  Highlights:
+                </span>
+                <ul className="mt-2 list-disc list-inside space-y-1">
+                  {project.highlights.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
+
+            {(project.note || project.status) && (
+              <div className="italic border-l-2 border-github-border pl-2">
+                {project.note
+                  ? project.note
+                  : project.status !== "live"
+                  ? "This project is not currently publicly accessible."
+                  : null}
+              </div>
+            )}
           </div>
         )}
       </div>

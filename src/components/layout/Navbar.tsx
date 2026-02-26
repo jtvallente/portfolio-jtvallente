@@ -5,6 +5,7 @@ import PrimaryButton from "@/components/ui/PrimaryButton"
 
 export default function Navbar() {
   const [contactOpen, setContactOpen] = useState(false)
+  const [mobileOpen, setMobileOpen] = useState(false)
   const [contactName, setContactName] = useState("")
   const [contactCompany, setContactCompany] = useState("")
   const [contactEmail, setContactEmail] = useState("")
@@ -40,11 +41,70 @@ export default function Navbar() {
               Projects
             </Link>
           </nav>
-          <PrimaryButton variant="secondary" onClick={() => setContactOpen(true)}>
+          <PrimaryButton
+            onClick={() => setContactOpen(true)}
+            className="bg-github-accent text-white shadow-[0_0_20px_rgba(159,122,234,0.45)] hover:shadow-[0_0_28px_rgba(159,122,234,0.6)]"
+          >
             Contact
           </PrimaryButton>
+          <button
+            type="button"
+            onClick={() => setMobileOpen((prev) => !prev)}
+            className="sm:hidden rounded-md border border-github-border bg-github-surface px-2.5 py-2 text-xs text-github-muted hover:text-github-text"
+            aria-label="Toggle navigation menu"
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-nav"
+          >
+            {mobileOpen ? (
+              <svg
+                viewBox="0 0 24 24"
+                className="h-4 w-4"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M6 6l12 12M18 6l-12 12" />
+              </svg>
+            ) : (
+              <svg
+                viewBox="0 0 24 24"
+                className="h-4 w-4"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M3 6h18M3 12h18M3 18h18" />
+              </svg>
+            )}
+          </button>
         </div>
       </div>
+        {mobileOpen && (
+          <div id="mobile-nav" className="sm:hidden border-t border-github-border bg-github-bg/95">
+            <nav className="max-w-5xl mx-auto px-6 py-4 flex flex-col gap-3 text-sm text-github-muted">
+              <Link
+                to="//"
+                className="hover:text-github-text"
+                onClick={() => setMobileOpen(false)}
+              >
+                Home
+              </Link>
+              <Link
+                to="/projects"
+                className="hover:text-github-text"
+                onClick={() => setMobileOpen(false)}
+              >
+                Projects
+              </Link>
+            </nav>
+          </div>
+        )}
     </header>
 
       {contactOpen && (

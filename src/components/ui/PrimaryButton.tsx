@@ -6,6 +6,7 @@ interface PrimaryButtonProps {
   onClick?: () => void
   type?: "button" | "submit"
   variant?: "primary" | "secondary"
+  className?: string
 }
 
 export default function PrimaryButton({
@@ -14,6 +15,7 @@ export default function PrimaryButton({
   onClick,
   type = "button",
   variant = "primary",
+  className = "",
 }: PrimaryButtonProps) {
   const base =
     "inline-flex items-center justify-center px-4 py-2 rounded-md text-sm font-medium transition"
@@ -26,14 +28,18 @@ export default function PrimaryButton({
 
   if (href && !onClick) {
     return (
-      <a href={href} className={`${base} ${styles}`}>
+      <a href={href} className={`${base} ${styles} ${className}`}>
         {children}
       </a>
     )
   }
 
   return (
-    <button type={type} onClick={onClick} className={`${base} ${styles}`}>
+    <button
+      type={type}
+      onClick={onClick}
+      className={`${base} ${styles} ${className}`}
+    >
       {children}
     </button>
   )
