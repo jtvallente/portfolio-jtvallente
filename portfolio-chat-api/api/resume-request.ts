@@ -72,7 +72,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           <div class="card" style="max-width:560px;margin:0 auto;border-radius:14px;overflow:hidden;">
             <div style="padding:16px 20px;border-bottom:1px solid #e5e7eb;background:linear-gradient(135deg, rgba(159,122,234,0.18), rgba(255,255,255,1));">
               <div class="muted" style="font-size:12px;letter-spacing:2px;text-transform:uppercase;">Resume Request</div>
-              <div style="font-size:18px;font-weight:600;margin-top:6px;">Access request received</div>
+              <div style="font-size:18px;font-weight:600;margin-top:6px;">Access request received 📄</div>
             </div>
             <div style="padding:20px;">
               <div class="muted" style="font-size:12px;">Requester Email</div>
@@ -83,7 +83,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
               </div>
             </div>
             <div class="muted" style="padding:12px 20px;border-top:1px solid #e5e7eb;font-size:12px;">
-              Reply directly to this email to respond.
+              Confidentiality notice: This email may contain private information intended only for the recipient. If you received it in error, please delete it.
             </div>
           </div>
         </div>
