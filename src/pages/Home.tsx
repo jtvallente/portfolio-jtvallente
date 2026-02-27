@@ -113,7 +113,7 @@ export default function Home() {
                   variant="secondary"
                   onClick={() => setResumeOpen(true)}
                 >
-                  Download Resume
+                  View Resume
                 </PrimaryButton>
               </div>
             </div>

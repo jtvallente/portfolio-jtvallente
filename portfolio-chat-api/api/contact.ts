@@ -55,56 +55,53 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       replyTo: email,
       subject: `[Portfolio] ${subject}`,
       html: `
-        <style>
-          .card { background: #ffffff; color: #111827; border: 1px solid #e5e7eb; }
-          .muted { color: #6b7280; }
-          .accent { color: #7c3aed; }
-          .chip { background: #f3f4f6; border: 1px solid #e5e7eb; }
-          .panel { background: #f9fafb; border: 1px solid #e5e7eb; }
-          .wrap { word-break: break-word; overflow-wrap: anywhere; }
-          @media (prefers-color-scheme: dark) {
-            .card { background: #161b22; color: #c9d1d9; border-color: #30363d; }
-            .muted { color: #8b949e; }
-            .accent { color: #9f7aea; }
-            .chip { background: #0f141b; border-color: #30363d; }
-            .panel { background: #0f141b; border-color: #30363d; }
-          }
-        </style>
-        <div style="padding:24px;font-family:Inter,Segoe UI,Arial,sans-serif;">
-          <div class="card" style="max-width:560px;margin:0 auto;border-radius:14px;overflow:hidden;">
-            <div style="padding:16px 20px;border-bottom:1px solid #e5e7eb;background:linear-gradient(135deg, rgba(159,122,234,0.18), rgba(255,255,255,1));">
-              <div class="muted" style="font-size:12px;letter-spacing:2px;text-transform:uppercase;">Portfolio Contact</div>
-              <div style="font-size:18px;font-weight:600;margin-top:6px;">New message received ✉️</div>
-            </div>
-            <div style="padding:20px;">
-              <div style="display:flex;gap:12px;flex-wrap:wrap;">
-                <div style="flex:1;min-width:220px;">
-                  <div class="muted" style="font-size:12px;">Name</div>
-                  <div style="font-size:14px;margin-top:4px;">${name || 'N/A'}</div>
+        <div style="padding:24px;font-family:Inter,Segoe UI,Arial,sans-serif;background:#ffffff;color:#111827;">
+          <table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;max-width:560px;margin:0 auto;border:1px solid #e5e7eb;border-radius:14px;overflow:hidden;background:#ffffff;color:#111827;">
+            <tr>
+              <td style="padding:16px 20px;border-bottom:1px solid #e5e7eb;background:#f3f4f6;">
+                <div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#6b7280;">Portfolio Contact</div>
+                <div style="font-size:18px;font-weight:600;margin-top:6px;">New message received ✉️</div>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:20px;">
+                <table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;border:1px solid #e5e7eb;border-radius:12px;padding:12px;">
+                  <tr>
+                    <td style="width:33%;vertical-align:top;padding-right:12px;">
+                      <div style="font-size:12px;color:#6b7280;">Name</div>
+                      <div style="font-size:14px;margin-top:4px;">${name || 'N/A'}</div>
+                    </td>
+                    <td style="width:33%;vertical-align:top;padding-right:12px;">
+                      <div style="font-size:12px;color:#6b7280;">Company</div>
+                      <div style="font-size:14px;margin-top:4px;">${company || 'N/A'}</div>
+                    </td>
+                    <td style="width:34%;vertical-align:top;">
+                      <div style="font-size:12px;color:#6b7280;">Email</div>
+                      <div style="font-size:14px;margin-top:4px;color:#7c3aed;word-break:break-word;overflow-wrap:anywhere;">${email}</div>
+                    </td>
+                  </tr>
+                </table>
+                <div style="margin-top:14px;">
+                  <span style="display:inline-block;border-radius:999px;padding:4px 10px;font-size:11px;background:#f3f4f6;border:1px solid #e5e7eb;">
+                    Subject: ${subject}
+                  </span>
                 </div>
-                <div style="flex:1;min-width:220px;">
-                  <div class="muted" style="font-size:12px;">Company</div>
-                  <div style="font-size:14px;margin-top:4px;">${company || 'N/A'}</div>
-                </div>
-                <div style="flex:1;min-width:220px;">
-                  <div class="muted" style="font-size:12px;">Email</div>
-                  <div class="accent wrap" style="font-size:14px;margin-top:4px;">${email}</div>
-                </div>
-              </div>
-              <div style="margin-top:14px;">
-                <span class="chip" style="display:inline-block;border-radius:999px;padding:4px 10px;font-size:11px;">
-                  Subject: ${subject}
-                </span>
-              </div>
-              <div class="panel" style="margin-top:16px;padding:14px;border-radius:10px;">
-                <div class="muted" style="font-size:12px;">Message</div>
-                <div style="font-size:14px;margin-top:8px;white-space:pre-wrap;">${message}</div>
-              </div>
-            </div>
-            <div class="muted" style="padding:12px 20px;border-top:1px solid #e5e7eb;font-size:12px;">
-              Confidentiality notice: This email may contain private information intended only for the recipient. If you received it in error, please delete it.
-            </div>
-          </div>
+                <table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;margin-top:16px;border:1px solid #e5e7eb;border-radius:12px;background:#f9fafb;">
+                  <tr>
+                    <td style="padding:12px;">
+                      <div style="font-size:12px;color:#6b7280;">Message</div>
+                      <div style="font-size:14px;margin-top:8px;white-space:pre-wrap;">${message}</div>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:12px 20px;border-top:1px solid #e5e7eb;font-size:12px;color:#6b7280;background:#f3f4f6;">
+                Confidentiality notice: This email may contain private information intended only for the recipient. If you received it in error, please delete it.
+              </td>
+            </tr>
+          </table>
         </div>
       `,
       text: [

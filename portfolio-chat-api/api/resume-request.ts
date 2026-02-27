@@ -55,37 +55,40 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       replyTo: email,
       subject: '[Portfolio] Resume access request',
       html: `
-        <style>
-          .card { background: #ffffff; color: #111827; border: 1px solid #e5e7eb; }
-          .muted { color: #6b7280; }
-          .accent { color: #7c3aed; }
-          .panel { background: #f9fafb; border: 1px solid #e5e7eb; }
-          .wrap { word-break: break-word; overflow-wrap: anywhere; }
-          @media (prefers-color-scheme: dark) {
-            .card { background: #161b22; color: #c9d1d9; border-color: #30363d; }
-            .muted { color: #8b949e; }
-            .accent { color: #9f7aea; }
-            .panel { background: #0f141b; border-color: #30363d; }
-          }
-        </style>
-        <div style="padding:24px;font-family:Inter,Segoe UI,Arial,sans-serif;">
-          <div class="card" style="max-width:560px;margin:0 auto;border-radius:14px;overflow:hidden;">
-            <div style="padding:16px 20px;border-bottom:1px solid #e5e7eb;background:linear-gradient(135deg, rgba(159,122,234,0.18), rgba(255,255,255,1));">
-              <div class="muted" style="font-size:12px;letter-spacing:2px;text-transform:uppercase;">Resume Request</div>
-              <div style="font-size:18px;font-weight:600;margin-top:6px;">Access request received 📄</div>
-            </div>
-            <div style="padding:20px;">
-              <div class="muted" style="font-size:12px;">Requester Email</div>
-              <div class="accent wrap" style="font-size:14px;margin-top:6px;">${email}</div>
-              <div class="panel" style="margin-top:16px;padding:14px;border-radius:10px;">
-                <div class="muted" style="font-size:12px;">Message</div>
-                <div style="font-size:14px;margin-top:8px;white-space:pre-wrap;">${message || 'No message provided.'}</div>
-              </div>
-            </div>
-            <div class="muted" style="padding:12px 20px;border-top:1px solid #e5e7eb;font-size:12px;">
-              Confidentiality notice: This email may contain private information intended only for the recipient. If you received it in error, please delete it.
-            </div>
-          </div>
+        <div style="padding:24px;font-family:Inter,Segoe UI,Arial,sans-serif;background:#ffffff;color:#111827;">
+          <table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;max-width:560px;margin:0 auto;border:1px solid #e5e7eb;border-radius:14px;overflow:hidden;background:#ffffff;color:#111827;">
+            <tr>
+              <td style="padding:16px 20px;border-bottom:1px solid #e5e7eb;background:#f3f4f6;">
+                <div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#6b7280;">Resume Request</div>
+                <div style="font-size:18px;font-weight:600;margin-top:6px;">Access request received 📄</div>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:20px;">
+                <table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;border:1px solid #e5e7eb;border-radius:12px;padding:12px;">
+                  <tr>
+                    <td style="vertical-align:top;">
+                      <div style="font-size:12px;color:#6b7280;">Requester Email</div>
+                      <div style="font-size:14px;margin-top:6px;color:#7c3aed;word-break:break-word;overflow-wrap:anywhere;">${email}</div>
+                    </td>
+                  </tr>
+                </table>
+                <table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;margin-top:16px;border:1px solid #e5e7eb;border-radius:12px;background:#f9fafb;">
+                  <tr>
+                    <td style="padding:12px;">
+                      <div style="font-size:12px;color:#6b7280;">Message</div>
+                      <div style="font-size:14px;margin-top:8px;white-space:pre-wrap;">${message || 'No message provided.'}</div>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:12px 20px;border-top:1px solid #e5e7eb;font-size:12px;color:#6b7280;background:#f3f4f6;">
+                Confidentiality notice: This email may contain private information intended only for the recipient. If you received it in error, please delete it.
+              </td>
+            </tr>
+          </table>
         </div>
       `,
       text: [

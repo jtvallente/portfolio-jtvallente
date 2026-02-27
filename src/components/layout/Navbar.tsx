@@ -17,7 +17,7 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 border-b border-github-border bg-github-bg/95 backdrop-blur">
+      <header className="sticky top-0 z-40 border-b border-github-border bg-[#9f7aea]/0 backdrop-blur">
         <div className="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center gap-4">
         {/* Logo + Brand */}
         <Link to="//" className="flex items-center gap-2 hover:opacity-90">
@@ -86,7 +86,7 @@ export default function Navbar() {
         </div>
       </div>
         {mobileOpen && (
-          <div id="mobile-nav" className="sm:hidden border-t border-github-border bg-github-bg/95">
+          <div id="mobile-nav" className="sm:hidden border-t border-github-border bg-[#0b0f14]/95">
             <nav className="max-w-5xl mx-auto px-6 py-4 flex flex-col gap-3 text-sm text-github-muted">
               <Link
                 to="//"
