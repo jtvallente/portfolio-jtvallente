@@ -4,7 +4,7 @@ import logo from "@/assets/kurator-logo.png"
 
 export default function Footer() {
   return (
-    <footer className="border-t border-github-border bg-[#000000]/0">
+    <footer className="border-t border-github-border bg-[#000000]/0 backdrop-blur">
       <div className="max-w-5xl mx-auto px-6 py-6 text-sm text-github-muted flex flex-col sm:flex-row items-center justify-between gap-4">
         
         {/* Logo + Brand */}

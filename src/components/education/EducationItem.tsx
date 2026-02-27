@@ -17,8 +17,8 @@ export default function EducationItem({ edu }: { edu: Education }) {
 
   return (
     <article className="mx-auto flex h-full w-full max-w-5xl flex-col gap-4 rounded-2xl border border-github-border bg-github-surface p-5 shadow-[0_8px_30px_rgba(0,0,0,0.25)] sm:flex-row sm:items-stretch sm:gap-6">
-      <div className="flex items-center gap-4 sm:flex-none">
-        <div className="h-20 w-auto overflow-hidden rounded-xl border border-github-border bg-white px-4 py-2 sm:h-full sm:w-28 sm:py-4">
+      <div className="flex min-w-0 items-center gap-3 sm:flex-none sm:gap-4">
+        <div className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-github-border bg-white p-2 sm:h-full sm:w-28 sm:px-4 sm:py-4">
           {logoSrc ? (
             <img
               src={logoSrc}
@@ -32,7 +32,7 @@ export default function EducationItem({ edu }: { edu: Education }) {
             </div>
           )}
         </div>
-        <div>
+        <div className="min-w-0 flex-1">
           <time className="inline-flex items-center rounded-full border border-github-border bg-github-bg px-2.5 py-1 text-xs font-semibold text-github-text">
             {edu.year}
           </time>
