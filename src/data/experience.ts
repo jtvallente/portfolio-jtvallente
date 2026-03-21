@@ -10,10 +10,24 @@ export interface Experience {
     liveWebsite?: string
   }
   
-  export const experiences: Experience[] = [
-    {
-      role: "Lecturer",
-      company: "ACES Polytechnic College",
+export const experiences: Experience[] = [
+  {
+    role: "Lead Frontend Developer",
+    company: "Angry Digital",
+    location: "GA, USA",
+    type: "Remote",
+    start: "March 2026",
+    end: "Present",
+    logo: "logos/angry-digital.png",
+    bullets: [
+      "Leading the frontend experience in Next.js and React with TypeScript, shaping a premium, intuitive, Apple-level user experience.",
+      "Integrating external data pipelines and APIs while improving system performance and optimizing data rendering.",
+      "Driving engineering best practices, Git workflows, and repository management, leveraging AI development tools to accelerate delivery, and partnering with the CEO and CTO to prepare the product for YC interviews and public launch."
+    ],
+  },
+  {
+    role: "Lecturer",
+    company: "ACES Polytechnic College",
       location: "Davao del Norte, Philippines",
       type: "On-site",
       start: "Jan 2026",

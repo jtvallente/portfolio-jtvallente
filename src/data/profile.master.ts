@@ -138,7 +138,17 @@ export type Profile = {
       "Introduction to Parallel Computing",
     ],
   
-    experience: [
+  experience: [
+      {
+        role: "Lead Frontend Developer",
+        company: "Angry Digital",
+        timeframe: "March 2026 - Present",
+        highlights: [
+          "Leading the frontend experience in Next.js and React with TypeScript, shaping a premium, intuitive, Apple-level user experience.",
+          "Integrating external data pipelines and APIs while improving system performance and optimizing data rendering.",
+          "Driving engineering best practices, Git workflows, and repository management, leveraging AI development tools to accelerate delivery, and partnering with the CEO and CTO to prepare the product for YC interviews and public launch.",
+        ],
+      },
       {
         role: "Lecturer / Guest Lecturer / Resource Speaker",
         company: "ACES Polytechnic College",
